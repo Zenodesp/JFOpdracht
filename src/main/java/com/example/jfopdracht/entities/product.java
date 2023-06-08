@@ -1,10 +1,10 @@
 package com.example.jfopdracht.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class product {
@@ -18,7 +18,11 @@ public class product {
     public String category;
     @NotNull
     public String decription;
-    /* public Person person; */
+
+    @ManyToOne
+    @JoinColumn(name = "personID")
+    public Person person;
+
     @NotNull
     public int price;
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us</title>
+    <link rel="stylesheet" th:href="@{main.css}">
+</head>
+<body>
+
+<nav th:insert="~{templateInserts :: navbar}"></nav>
+
+<div>
+    <div>
+        <h2> Onze contactgegevens</h2>
+        <p>221b Dillelaan, 1070 Brussel</p>
+    </div>
+
+    <div>
+        <h2>Wie we zijn</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet deleniti error eum exercitationem, facere, impedit, minima nam perferendis quasi quod sed soluta voluptas. Asperiores excepturi quibusdam repudiandae sit voluptate?</p>
+    </div>
+</div>
+
+<footer th:insert="~{templateInserts :: footer}"></footer>
+
+</body>
+</html>

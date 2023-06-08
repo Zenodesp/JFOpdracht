@@ -3,8 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>product menu</title>
+    <link rel="stylesheet" th:href="@{main.css}">
 </head>
 <body>
 
+<nav th:insert="~{templateInserts :: navbar}"></nav>
+
+<table>
+    <thead>
+    <td>Name</td>
+    <td>Price</td>
+    </thead>
+
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td>
+            <span th:text="${product.name}"></span>
+        </td>
+        <td>
+            <span th:text="${product.price}"></span>
+        </td>
+    </tr>
+    </tbody>
+
+</table>
+
+<button onclick="window.location.href='new';">
+    Add a new product
+</button>
+
+<footer th:insert="~{templateInserts :: footer}"></footer>
 </body>
 </html>

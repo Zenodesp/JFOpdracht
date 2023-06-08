@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Product/Person</title>
+    <link rel="stylesheet" th:href="@{main.css}">
+</head>
+<body>
+
+<nav th:insert="~{templateInserts :: navbar}"></nav>
+
+<div>
+
+<form method="post" th:action="@{~/new}" th:object="${productToSave}">
+    <div>
+        <h3>Add a product</h3>
+    </div>
+    <div>
+        <p>Name:</p>
+        <input type="text" th:field="*{name}">
+        <br>
+    </div>
+    <div>
+        <p>Category:</p>
+        <input type="text" th:field="*{category}">
+        <br>
+    </div>
+    <div>
+        <p>Description:</p>
+        <input type="text" th:field="*{decription}">
+        <br>
+    </div>
+    <div>
+        <p>Price:</p>
+        <input type="number" th:field="*{price}">
+        <br>
+
+        <button th:field="submit">Submit</button>
+
+        <span th:if="${#fields.hasErrors()}" th:text="${#fields.errors()}" class="error_text"></span>
+
+
+    </div>
+
+</form>
+
+    <form method="post" th:action="@{~/newperson}" th:object="${PersonToSave}">
+        <div>
+            <h3>Add a person</h3>
+        </div>
+        <div>
+            <p>Name:</p>
+            <input type="text" th:field="*{name}">
+            <br>
+        </div>
+        <div>
+            <p>E-Mail:</p>
+            <input type="text" th:field="*{email}">
+            <br>
+        </div>
+        <button th:field="submit">Submit</button>
+
+        <span th:if="${#fields.hasErrors()}" th:text="${#fields.errors()}" class="error_text"></span>
+
+    </form>
+
+</div>
+
+<footer th:insert="~{templateInserts :: footer}"></footer>
+</body>
+</html>
