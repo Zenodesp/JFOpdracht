@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class productController {
@@ -88,15 +89,17 @@ public class productController {
         return "redirect:/index";
     }
 
-    @RequestMapping("/details/{id}")
-    @ResponseBody
-    public String ShowProductDetails(product p1, BindingResult br){
-
-        if(br.hasErrors()){
-            return "/index";
+    @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
+    public String ShowProductDetails(ModelMap mmap, @PathVariable(value = "id") int id){
+        Optional<product> op = mProductDAO.findById(id);
+        if(op.isPresent()) {
+            mmap.addAttribute("product", op.get());
+            return "/details";
         }
 
-        return "/details/{id}";
+        return "redirect:/index";
+
+
     }
 
 

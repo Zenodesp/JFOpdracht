@@ -23,6 +23,9 @@
         <td>
             <span th:text="${product.price}"></span>
         </td>
+        <td>
+            <button><a th:href="@{~/details/{id}(id = ${product.id})}">Meer Details</a></button>
+        </td>
     </tr>
     </tbody>
 

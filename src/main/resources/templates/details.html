@@ -9,6 +9,28 @@
 
 <nav th:insert="~{templateInserts :: navbar}"></nav>
 
+<table  th:object="${product}">
+    <tr>
+        <td>name</td>
+        <td th:text="*{name}"></td>
+    </tr>
+    <tr>
+        <td>category</td>
+        <td th:text="*{category}"></td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td th:text="*{decription}"></td>
+    </tr>
+    <tr>
+        <td>Offered by</td>
+        <td th:text="*{person.name}"></td>
+    </tr>
+    <tr>
+        <td>Price</td>
+        <td th:text="*{price}"></td>
+    </tr>
+</table>
 
 
 
