@@ -26,6 +26,15 @@
         <br>
     </div>
     <div>
+        <p>Product offered by:</p>
+        <select th:field="*{person}">
+            <option th:each="Person : ${selectpersons}"  th:value="${Person.id}" th:text="${Person}">
+
+            </option>
+        </select>
+        <br>
+    </div>
+    <div>
         <p>Description:</p>
         <input type="text" th:field="*{decription}">
         <br>

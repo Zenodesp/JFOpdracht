@@ -3,6 +3,7 @@ package com.example.jfopdracht.entities;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,11 +13,11 @@ public class product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
 
-    @NotNull
+    @NotBlank
     public String name;
-    @NotNull
+    @NotBlank
     public String category;
-    @NotNull
+    @NotBlank
     public String decription;
 
     @ManyToOne
@@ -67,5 +68,13 @@ public class product {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }

@@ -4,20 +4,21 @@ import com.example.jfopdracht.dao.PersonDAO;
 import com.example.jfopdracht.dao.productDAO;
 import com.example.jfopdracht.entities.Person;
 import com.example.jfopdracht.entities.product;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @Controller
 public class productController {
 
+    @Autowired
     private productDAO mProductDAO;
 
+    @Autowired
     private PersonDAO mPersonDAO;
 
 
@@ -28,6 +29,11 @@ public class productController {
     @ModelAttribute("products")
     public Iterable<product> getAllProducts(){
         return mProductDAO.findAll();
+    }
+
+    @ModelAttribute("selectpersons")
+    public Iterable<Person> getAllPersons(){
+        return mPersonDAO.findAll();
     }
 
     @GetMapping({"/", "/index"})
@@ -43,6 +49,11 @@ public class productController {
     @GetMapping("/about")
     public String ShowAbout(ModelMap modelMap){
         return "about";
+    }
+
+    @GetMapping("/details")
+    public String ShowDetails(ModelMap modelMap){
+        return "details";
     }
 
     @ModelAttribute("productToSave")
@@ -75,6 +86,17 @@ public class productController {
         }
         mPersonDAO.save(per1);
         return "redirect:/index";
+    }
+
+    @RequestMapping("/details/{id}")
+    @ResponseBody
+    public String ShowProductDetails(product p1, BindingResult br){
+
+        if(br.hasErrors()){
+            return "/index";
+        }
+
+        return "/details/{id}";
     }
 
 
