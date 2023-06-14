@@ -9,70 +9,76 @@
 
 <nav th:insert="~{templateInserts :: navbar}"></nav>
 
-<div>
+<div class="container">
 
-<form method="post" th:action="@{~/new}" th:object="${productToSave}">
     <div>
-        <h3>Add a product</h3>
-    </div>
-    <div>
-        <p>Name:</p>
-        <input type="text" th:field="*{name}">
-        <br>
-    </div>
-    <div>
-        <p>Category:</p>
-        <input type="text" th:field="*{category}">
-        <br>
-    </div>
-    <div>
-        <p>Product offered by:</p>
-        <select th:field="*{person}">
-            <option th:each="Person : ${selectpersons}"  th:value="${Person.id}" th:text="${Person}">
 
-            </option>
-        </select>
-        <br>
-    </div>
-    <div>
-        <p>Description:</p>
-        <input type="text" th:field="*{decription}">
-        <br>
-    </div>
-    <div>
-        <p>Price:</p>
-        <input type="number" th:field="*{price}">
-        <br>
+        <div class="child-l">
+            <form method="post" th:action="@{~/new}" th:object="${productToSave}">
+                <div>
+                    <h3>Add a product</h3>
+                </div>
+                <div>
+                    <p>Name:</p>
+                    <input type="text" th:field="*{name}">
+                    <br>
+                </div>
+                <div>
+                    <p>Category:</p>
+                    <input type="text" th:field="*{category}">
+                    <br>
+                </div>
+                <div>
+                    <p>Product offered by:</p>
+                    <select th:field="*{person}">
+                        <option th:each="Person : ${selectpersons}"  th:value="${Person.id}" th:text="${Person}">
 
-        <button th:field="submit">Submit</button>
+                        </option>
+                    </select>
+                    <br>
+                </div>
+                <div>
+                    <p>Description:</p>
+                    <input type="text" th:field="*{decription}">
+                    <br>
+                </div>
+                <div>
+                    <p>Price:</p>
+                    <input type="number" th:field="*{price}">
+                    <br>
 
-        <span th:if="${#fields.hasErrors()}" th:text="${#fields.errors()}" class="error_text"></span>
+                    <button th:field="submit">Submit</button>
+
+                    <span th:if="${#fields.hasErrors()}" th:text="${#fields.errors()}" class="error_text"></span>
+                </div>
 
 
-    </div>
-
-</form>
-
-    <form method="post" th:action="@{~/newperson}" th:object="${PersonToSave}">
-        <div>
-            <h3>Add a person</h3>
+            </form>
         </div>
-        <div>
-            <p>Name:</p>
-            <input type="text" th:field="*{name}">
-            <br>
-        </div>
-        <div>
-            <p>E-Mail:</p>
-            <input type="text" th:field="*{email}">
-            <br>
-        </div>
-        <button th:field="submit">Submit</button>
 
-        <span th:if="${#fields.hasErrors()}" th:text="${#fields.errors()}" class="error_text"></span>
+    <div class="child-r">
+        <form method="post" th:action="@{~/newperson}" th:object="${PersonToSave}">
+            <div>
+                <h3>Add a person</h3>
+            </div>
+            <div>
+                <p>Name:</p>
+                <input type="text" th:field="*{name}">
+                <br>
+            </div>
+            <div>
+                <p>E-Mail:</p>
+                <input type="text" th:field="*{email}">
+                <br>
+            </div>
+            <button th:field="submit">Submit</button>
 
-    </form>
+            <span th:if="${#fields.hasErrors()}" th:text="${#fields.errors()}" class="error_text"></span>
 
+        </form>
+    </div>
+
+</div>
 </div>
 
 <footer th:insert="~{templateInserts :: footer}"></footer>
